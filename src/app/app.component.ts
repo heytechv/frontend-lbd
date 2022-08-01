@@ -11,8 +11,13 @@ export class AppComponent {
 
   @ViewChild('todoInput') todoInput;
 
-
   public todos: TodosService;
+
+  // It is not callable (its get accessor so just call it as variable! noice)
+  get getTodoList() {
+    return this.todos.getTodoList();
+  };
+
 
   constructor(todoInput: ElementRef, todos: TodosService) {
 
@@ -23,13 +28,17 @@ export class AppComponent {
   }
 
   public onClickAdd() {
-
     let val = this.todoInput.nativeElement.value;
+    // not empty
+    if (!val) return
 
+    // add to list
     this.todos.addTodo(val);
     console.log(this.todos.getTodoList());
-
+    // clear
     this.todoInput.nativeElement.value = "";
+    // focus
+    this.todoInput.nativeElement.focus();
   }
 
 
