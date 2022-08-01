@@ -9,32 +9,30 @@ import { TodosService } from './todos.service';
 export class AppComponent {
   title = 'frontend-lbd';
 
+  // input from HTML
   @ViewChild('todoInput') todoInput;
-
-  public todos: TodosService;
-
-  // It is not callable (its get accessor so just call it as variable! noice)
+  // service (for storing data)
+  todosService: TodosService;
+  // todoList from service available here :). It is not callable (its get accessor so just call it as variable! noice)
   get getTodoList() {
-    return this.todos.getTodoList();
+    return this.todosService.getTodoList();
   };
 
 
-  constructor(todoInput: ElementRef, todos: TodosService) {
-
+  constructor(todoInput: ElementRef, todosService: TodosService) {
     this.todoInput = todoInput;
-
-    this.todos = todos;
+    this.todosService = todosService;
     console.log("siema");
   }
 
   public onClickAdd() {
-    let val = this.todoInput.nativeElement.value;
+    let val = this.todoInput.nativeElement.value.trim();
     // not empty
     if (!val) return
 
     // add to list
-    this.todos.addTodo(val);
-    console.log(this.todos.getTodoList());
+    this.todosService.addTodo(val);
+    console.log(this.todosService.getTodoList());
     // clear
     this.todoInput.nativeElement.value = "";
     // focus
