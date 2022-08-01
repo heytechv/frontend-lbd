@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Todo } from '../todo';
+import { TodosService } from '../todos.service';
 
 @Component({
   selector: 'app-todo-item-component',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoItemComponentComponent implements OnInit {
 
-  constructor() { }
+  // Input (var passed from parrent app.component.html to this)
+  @Input("todoIn") public todo : Todo = {name: "", done: false};
+
+  todosService: TodosService;
+
+  // Inject TodoService
+  constructor(todosService: TodosService) {
+    this.todosService = todosService;
+  }
 
   ngOnInit(): void {
   }
+
+  /**
+   * Remove element */
+  onClickRemoveThis() {
+    console.log("Removing "+this.todo.name);
+    this.todosService.removeTodo(this.todo);
+  }
+
 
 }

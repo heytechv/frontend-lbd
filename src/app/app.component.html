@@ -9,9 +9,10 @@
 <section>
   <mat-label>Lista zadań</mat-label>
   <mat-list role="list">
-    <mat-list-item role="listitem" *ngFor="let todo of getTodoList">
-      {{todo}}
+    <mat-list-item role="listitem" *ngFor="let todo of getTodoList;let indexOfelement=index;">
+      <app-todo-item-component [todoIn]="todo"></app-todo-item-component>
     </mat-list-item>
+
   </mat-list>
 </section>
 
