@@ -6,17 +6,32 @@
   <button mat-raised-button color="primary" (click)="onClickAdd()">Add</button>
 </section>
 
+<!-- Todos - do zrobienia -->
 <section>
-  <mat-label>Lista zadań</mat-label>
+  <mat-label>Lista zadań do zrobienia</mat-label>
   <mat-list role="list">
-    <mat-list-item role="listitem" *ngFor="let todo of getTodoList;let indexOfelement=index;">
+
+    <mat-list-item role="listitem" *ngFor="let todo of getTodoList | todoDone:false">
       <app-todo-item-component [todoIn]="todo"></app-todo-item-component>
     </mat-list-item>
 
   </mat-list>
 </section>
 
+<!-- Todos - gotowe -->
 <section>
-  <app-todo-item-component></app-todo-item-component>
+  <mat-label>Lista zadań gotowych</mat-label>
+  <mat-list role="list">
+
+    <mat-list-item role="listitem" *ngFor="let todo of getTodoList | todoDone:true">
+      <app-todo-item-component [todoIn]="todo"></app-todo-item-component>
+    </mat-list-item>
+
+  </mat-list>
 </section>
+
+
+<!-- <section>
+  <app-todo-item-component></app-todo-item-component>
+</section> -->
 

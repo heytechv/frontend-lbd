@@ -14,20 +14,36 @@ export class TodoItemComponentComponent implements OnInit {
 
   todosService: TodosService;
 
-  // Inject TodoService
+  /**
+   * Inject todosService
+   * @param todosService 
+   */
   constructor(todosService: TodosService) {
     this.todosService = todosService;
   }
 
+  /**
+   * onInit
+   */
   ngOnInit(): void {
   }
 
   /**
-   * Remove element */
+   * Remove element
+   * */
   onClickRemoveThis() {
     console.log("Removing "+this.todo.name);
     this.todosService.removeTodo(this.todo);
   }
+
+  /**
+   * Update Todo Item status
+   * @param event event from html
+   */
+  checkValue(event: any){
+    let state = event.srcElement.checked;
+    this.todo.done = state;
+ }
 
 
 }

@@ -10,12 +10,14 @@ import {MatListModule} from '@angular/material/list';
 import { TodoItemComponentComponent } from './todo-item-component/todo-item-component.component';
 
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { TodoDonePipe } from './todo-done.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodoItemComponentComponent
+    TodoItemComponentComponent,
+    TodoDonePipe
   ],
   imports: [
     BrowserModule,

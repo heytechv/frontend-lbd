@@ -31,7 +31,7 @@ export class AppComponent {
     if (!val) return
 
     // add to list
-    this.todosService.addTodo({name: val, done: true});
+    this.todosService.addTodo({name: val, done: false});
     console.log(this.todosService.getTodoList());
     // clear
     this.todoInput.nativeElement.value = "";
