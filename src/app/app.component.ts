@@ -10,11 +10,11 @@ import { TodosService } from './todos.service';
 export class AppComponent {
   title = 'frontend-lbd';
 
-  // input from HTML
+  // input element from HTML (tagget with #todoInput)
   @ViewChild('todoInput') todoInput;
   // service (for storing data)
   todosService: TodosService;
-  // todoList from service available here :). It is not callable (its get accessor so just call it as variable! noice)
+  // todoList from service available here :). It is not callable (its 'get' accessor so just call it as variable! noice)
   get getTodoList() {
     return this.todosService.getTodoList();
   };

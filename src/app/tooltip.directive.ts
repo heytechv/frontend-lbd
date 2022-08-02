@@ -11,6 +11,9 @@ export class TooltipDirective {
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
+  /**
+   * Listeners
+   */
   @HostListener('mouseenter') onMouseEnter() {
     if (!this.tooltip) { this.show(); }
   }
@@ -27,7 +30,9 @@ export class TooltipDirective {
     if (this.tooltip) { this.hide(); }
   }
 
-
+  /**
+   * Tooltip functions
+   */
   private show() {
     this.create();
     this.renderer.addClass(this.tooltip, 'ng-tooltip-show');
@@ -42,6 +47,7 @@ export class TooltipDirective {
 
   private create() {
     // https://stackblitz.com/edit/angular-tooltip-directive-9cf6fg?file=app%2Ftooltip.directive.ts,app%2Fapp.component.ts
+    // https://javascript.plainenglish.io/creating-a-tooltip-directive-in-angular-abfc607d52f3s
 
     this.tooltip = this.renderer.createElement('span');
 
@@ -61,10 +67,9 @@ export class TooltipDirective {
     // set position
     const hostPos = this.el.nativeElement.getBoundingClientRect();
     const tooltipPos = this.tooltip.getBoundingClientRect();
-
     const scrollPos = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
-    let top = hostPos.top - tooltipPos.height + 80;
+    let top = hostPos.bottom;
     let left = hostPos.left + (hostPos.width - tooltipPos.width) / 2;
 
     this.renderer.setStyle(this.tooltip, 'top', `${top + scrollPos}px`);

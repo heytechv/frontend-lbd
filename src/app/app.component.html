@@ -1,3 +1,4 @@
+<!-- Input -->
 <section>
   <mat-form-field>
     <mat-label>Nazwa taska</mat-label>
@@ -11,12 +12,10 @@
   <mat-label>Lista zadań do zrobienia</mat-label>
   <mat-list role="list">
 
-    <mat-list-item role="listitem" *ngFor="let todo of getTodoList | todoDone:false">
+    <mat-list-item role="listitem" *ngFor="let todo of getTodoList | todoShouldBeDone:false">
       <app-todo-item-component appTooltip [tooltipDateDone]="todo.doneCreated" [todoIn]="todo"></app-todo-item-component>
     </mat-list-item>
     
-
-
   </mat-list>
 </section>
 
@@ -25,7 +24,7 @@
   <mat-label>Lista zadań gotowych</mat-label>
   <mat-list role="list">
 
-    <mat-list-item role="listitem" *ngFor="let todo of getTodoList | todoDone:true">
+    <mat-list-item role="listitem" *ngFor="let todo of getTodoList | todoShouldBeDone:true">
       <app-todo-item-component appTooltip [tooltipDateDone]="todo.doneCreated" [todoIn]="todo"></app-todo-item-component>
     </mat-list-item>
 

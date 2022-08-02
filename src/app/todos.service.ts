@@ -7,7 +7,6 @@ import { Todo } from './todo';
 export class TodosService {
 
   // todoList: string[] = [];  // first version (list on string)
-
   todoList : Array<Todo> = [];
 
 
