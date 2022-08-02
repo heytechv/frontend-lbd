@@ -42,7 +42,10 @@ export class TodoItemComponentComponent implements OnInit {
    */
   checkValue(event: any){
     let state = event.srcElement.checked;
+    //update done state
     this.todo.done = state;
+    //update date (time)
+    this.todo.doneCreated = Date.now();
  }
 
 

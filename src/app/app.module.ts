@@ -11,13 +11,15 @@ import { TodoItemComponentComponent } from './todo-item-component/todo-item-comp
 
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { TodoDonePipe } from './todo-done.pipe';
+import { TooltipDirective } from './tooltip.directive';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoItemComponentComponent,
-    TodoDonePipe
+    TodoDonePipe,
+    TooltipDirective
   ],
   imports: [
     BrowserModule,
