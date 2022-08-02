@@ -26,6 +26,10 @@ export class AppComponent {
     console.log("siema");
   }
 
+  public onEnterInput() {
+    this.onClickAdd();
+  }
+
   public onClickAdd() {
     let val = this.todoInput.nativeElement.value.trim();
     // not empty

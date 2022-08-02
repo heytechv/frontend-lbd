@@ -1,10 +1,10 @@
 <!-- Input -->
-<section>
+<section class="input-container">
   <mat-form-field>
     <mat-label>Nazwa taska</mat-label>
-    <input #todoInput matInput>
+    <input #todoInput required matInput id="taskInput" (keyup.enter)="onEnterInput()">
   </mat-form-field>
-  <button mat-raised-button color="primary" (click)="onClickAdd()">Add</button>
+  <button mat-raised-button id="addBtn" color="add-btn" (click)="onClickAdd()">&#43; Nowy task</button>
 </section>
 
 <!-- Todos - do zrobienia -->
@@ -12,7 +12,7 @@
   <mat-label>Lista zadań do zrobienia</mat-label>
   <mat-list role="list">
 
-    <mat-list-item role="listitem" *ngFor="let todo of getTodoList | todoShouldBeDone:false">
+    <mat-list-item role="listitem" id="todo-list" *ngFor="let todo of getTodoList | todoShouldBeDone:false">
       <app-todo-item-component appTooltip [tooltipDateDone]="todo.doneCreated" [todoIn]="todo"></app-todo-item-component>
     </mat-list-item>
     
@@ -24,7 +24,7 @@
   <mat-label>Lista zadań gotowych</mat-label>
   <mat-list role="list">
 
-    <mat-list-item role="listitem" *ngFor="let todo of getTodoList | todoShouldBeDone:true">
+    <mat-list-item role="listitem" id="todo-list" *ngFor="let todo of getTodoList | todoShouldBeDone:true">
       <app-todo-item-component appTooltip [tooltipDateDone]="todo.doneCreated" [todoIn]="todo"></app-todo-item-component>
     </mat-list-item>
 

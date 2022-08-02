@@ -1,31 +1,62 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #E4E9FF;
+  height: 100%;
+}
 
+.main-container {
+  padding-top: 5em;
+  margin: auto;
+  width: 40%;
+}
 
+.header-card {
+  background-color: #A981E9;
+  box-shadow: 0px 0px 24px -22px black;
+  border-radius: 0.2em;
+  color: white;
+  font-size: 1.5em;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  text-align: center;
+
+}
+
+.content-card {
+  background-color: white;
+  box-shadow: 0px 0px 24px -22px black;
+  border-radius: 0.2em;
+  padding: 2em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  /* color: #A3A9C6; */
+}
+
+/* Tooltip classes */
 .ng-tooltip {
-    position: absolute;
-    max-width: 150px;
-    font-size: 14px;
-    text-align: center;
-    color: #f8f8f2;
-    padding: 3px 8px;
-    background: #282a36;
-    border-radius: 4px;
-    z-index: 1000;
-    opacity: 0;
-  }
+  position: absolute;
+  max-width: 150px;
+  font-size: 14px;
+  text-align: center;
+  color: #f8f8f2;
+  padding: 3px 8px;
+  background: #282a36;
+  border-radius: 4px;
+  z-index: 1000;
+  opacity: 0;
+}
 
-  .ng-tooltip:after {
-    content: "";
-    position: absolute;
-    border-style: solid;
+.ng-tooltip:after {
+  content: "";
+  position: absolute;
+  border-style: solid;
 
-    bottom: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-color: transparent transparent black transparent;
-  }
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-color: transparent transparent black transparent;
+}
 
 .ng-tooltip-show {
-    opacity: 1;
+  opacity: 1;
 }

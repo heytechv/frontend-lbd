@@ -64,6 +64,13 @@ export class TooltipDirective {
     // add class to tooltip
     this.renderer.addClass(this.tooltip, 'ng-tooltip');
 
+    // tansition
+    let delay = 500;
+    this.renderer.setStyle(this.tooltip, '-webkit-transition', `opacity ${delay}ms`);
+    this.renderer.setStyle(this.tooltip, '-moz-transition', `opacity ${delay}ms`);
+    this.renderer.setStyle(this.tooltip, '-o-transition', `opacity ${delay}ms`);
+    this.renderer.setStyle(this.tooltip, 'transition', `opacity ${delay}ms`);
+
     // set position
     const hostPos = this.el.nativeElement.getBoundingClientRect();
     const tooltipPos = this.tooltip.getBoundingClientRect();

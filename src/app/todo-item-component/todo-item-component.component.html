@@ -6,8 +6,12 @@
 <!-- https://dev.to/proticm/styling-html-checkboxes-is-super-easy-302o -->
 
 <label class="checkbox">
-    <input type="checkbox" (change)="checkValue($event)" [checked]="todo.done"/>
-    <span>{{todo['name']}}</span>
-    <input type="button" class="delete-btn" value="✖" (click)="onClickRemoveThis()" />
+    <table>
+        <tr>
+            <td><input type="checkbox" (change)="checkValue($event)" [checked]="todo.done"/></td>
+            <td><span>{{todo['name']}}</span></td>
+            <td><input type="button" class="delete-btn" value="✖" (click)="onClickRemoveThis()" /></td>
+        </tr>
+    </table>
 </label>
 
