@@ -1,10 +1,12 @@
-import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
+import { Todo } from './todo';
 
 @Directive({
   selector: '[appTooltip]'
 })
 export class TooltipDirective {
 
+  @Input('tooltipDateDone') tooltipDateDone?: number;
   tooltip: any;
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
@@ -43,10 +45,17 @@ export class TooltipDirective {
 
     this.tooltip = this.renderer.createElement('span');
 
-    this.renderer.appendChild(this.tooltip, this.renderer.createText('siema xd'));
+    // tooltip text
+    let timestamp = this.tooltipDateDone || null;
+    let text = "Nie zrobione";
+    if (timestamp) {
+      text = "Zrobione dnia "+ new Date(timestamp).toLocaleDateString("pl-PL");
+    }
+    this.renderer.appendChild(this.tooltip, this.renderer.createText(text));
 
+    // add tooltip to document
     this.renderer.appendChild(document.body, this.tooltip);
-
+    // add class to tooltip
     this.renderer.addClass(this.tooltip, 'ng-tooltip');
 
     // set position
@@ -55,7 +64,7 @@ export class TooltipDirective {
 
     const scrollPos = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
-    let top = hostPos.top - tooltipPos.height + 65;
+    let top = hostPos.top - tooltipPos.height + 80;
     let left = hostPos.left + (hostPos.width - tooltipPos.width) / 2;
 
     this.renderer.setStyle(this.tooltip, 'top', `${top + scrollPos}px`);

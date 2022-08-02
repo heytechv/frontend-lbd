@@ -12,7 +12,7 @@
   <mat-list role="list">
 
     <mat-list-item role="listitem" *ngFor="let todo of getTodoList | todoDone:false">
-      <app-todo-item-component appTooltip [todoIn]="todo"></app-todo-item-component>
+      <app-todo-item-component appTooltip [tooltipDateDone]="todo.doneCreated" [todoIn]="todo"></app-todo-item-component>
     </mat-list-item>
     
 
@@ -26,7 +26,7 @@
   <mat-list role="list">
 
     <mat-list-item role="listitem" *ngFor="let todo of getTodoList | todoDone:true">
-      <app-todo-item-component appTooltip [todoIn]="todo"></app-todo-item-component>
+      <app-todo-item-component appTooltip [tooltipDateDone]="todo.doneCreated" [todoIn]="todo"></app-todo-item-component>
     </mat-list-item>
 
   </mat-list>
