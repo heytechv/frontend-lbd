@@ -1,14 +1,6 @@
 # FrontendLbd
 TODO list using Angular framework.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 ## Componenet vs Service vs Module
 `Component` jest jakby widokiem (zawiera logike oraz kod html), który jest wyświetlany dla użytkownika.
 
@@ -68,4 +60,10 @@ get getTodoList() {
 @Input("todoIn") public todo : Todo = {name: "", done: false};
 ```
 
+## Development server
 
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
