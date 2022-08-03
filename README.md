@@ -1,6 +1,5 @@
 # FrontendLbd
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+TODO list using Angular framework.
 
 ## Development server
 
@@ -10,18 +9,63 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Componenet vs Service vs Module
+`Component` jest jakby widokiem (zawiera logike oraz kod html), który jest wyświetlany dla użytkownika.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+`Service` służy głównie do jako miejsce wymiany/przechowywania danych.
 
-## Running unit tests
+`Module` posiada wiele Component oraz Service
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Component
+### 1. Odwoływanie do pola z HTMLa (pozyskiwanie elementu)
+Dodajemy w HTMLu `#nazwa`
+```html
+<input #todoInput>
+```
+A w ts możemy pozyskać poprzez:
+```ts
+@ViewChild('todoInput') todoInput;
 
-## Running end-to-end tests
+// wstrzykiwanie
+constructor(todoInput: ElementRef) {
+    this.todoInput = todoInput;
+}
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### 2. Akcje typu OnClick
+W HTMLu bindujemy event:
+```html
+<button (click)="onClick()">Click</button>
+```
+w ts tworzymy event:
+```ts
+public onClickAdd() {
+    console.log("Click!");
+}
+```
 
-## Further help
+### 3. Przekazywanie danych z jednego Component (z HTML) do drugiego Component
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+*app.component.html*
+```html
+<mat-list-item *ngFor="let todo of getTodoList">
+
+    <app-todo-item-component [todoIn]="todo"></app-todo-item-component>
+
+</mat-list-item>
+```
+
+*app.component.ts*
+```ts
+// todoList from service available here :). It is not callable (its 'get' accessor so just call it as variable! noice)
+get getTodoList() {
+    return this.todosService.getTodoList();
+};
+```
+
+*todo-item.component.ts*
+```ts
+@Input("todoIn") public todo : Todo = {name: "", done: false};
+```
+
+

@@ -33,7 +33,7 @@ export class AppComponent {
   public onClickAdd() {
     let val = this.todoInput.nativeElement.value.trim();
     // not empty
-    if (!val) return
+    if (!val) return;
 
     // add to list
     this.todosService.addTodo({name: val, done: false});
