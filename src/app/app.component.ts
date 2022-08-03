@@ -19,7 +19,7 @@ export class AppComponent {
   get getTodoList() {
     return this.todosService.getTodoList();
   };
-  /* notifyContainer */
+  /* dialog container */
   @ViewChild('dialog', {read:ViewContainerRef}) dialogEntry!: ViewContainerRef;
 
 
@@ -46,9 +46,13 @@ export class AppComponent {
     // focus
     this.todoInput.nativeElement.focus();
 
-    this.createDialog("XDDD");
+    this.createDialog("Dodano nowy task '"+val+"'");
   }
 
+  /**
+   * Create Dialog
+   * @param message message to show inside Dialog
+   */
   createDialog(message: string) {
     this.dialogService.open(this.dialogEntry, message);
   }

@@ -16,11 +16,14 @@ export class DialogService {
 
     this.componentRef = entry.createComponent(DialogComponent);
     this.componentRef.instance.message = message;
-    this.componentRef.instance.closeEvent.subscribe(() => this.close());
+    this.componentRef.instance.thisComponentRef = this.componentRef;
+    // this.componentRef.instance.closeEvent.subscribe(() => this.close());
+    this.componentRef.instance.closeEvent.subscribe((compCloseRef) => this.close(compCloseRef));
   }
 
-  close() {
-    this.componentRef.destroy();
+  close(compCloseRef: ComponentRef<DialogComponent>) {
+    // console.log(compCloseRef);
+    compCloseRef.destroy();
   }
 
 }

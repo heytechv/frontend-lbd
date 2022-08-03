@@ -18,3 +18,10 @@
     height: auto;
 }
 
+/* Dialog */
+.dialog-container {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}
+

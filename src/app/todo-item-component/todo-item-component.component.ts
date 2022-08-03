@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild, ViewContainerRef } from '@angular/core';
+import { DialogService } from '../dialog/dialog.service';
 import { Todo } from '../todo';
 import { TodosService } from '../todos.service';
 
@@ -14,11 +15,14 @@ export class TodoItemComponentComponent implements OnInit {
 
   todosService: TodosService;
 
+  /* dialog container */
+  @Output("createDialog") createDialogEvent = new EventEmitter;
+
   /**
    * Inject todosService
    * @param todosService 
    */
-  constructor(todosService: TodosService) {
+  constructor(todosService: TodosService, private dialogService: DialogService) {
     this.todosService = todosService;
   }
 
@@ -34,6 +38,8 @@ export class TodoItemComponentComponent implements OnInit {
   onClickRemoveThis() {
     console.log("Removing "+this.todo.name);
     this.todosService.removeTodo(this.todo);
+
+    this.createDialogEvent.emit({message: "Usunięto '"+this.todo.name+"'"})
   }
 
   /**
@@ -48,7 +54,13 @@ export class TodoItemComponentComponent implements OnInit {
     this.todo.doneCreated = undefined;
     if (state) {
       this.todo.doneCreated = Date.now();
+
+      this.createDialogEvent.emit({message: "Zaznaczono '"+this.todo.name+"' jako zrobione"});
+    } else {
+      this.createDialogEvent.emit({message: "Zaznaczono '"+this.todo.name+"' jak do zrobienia"});
     }
+
+    
  }
 
 }

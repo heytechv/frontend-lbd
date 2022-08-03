@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ComponentRef, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-dialog',
@@ -8,8 +8,13 @@ import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, 
 export class DialogComponent implements OnInit, OnDestroy {
 
   // https://dev.to/hssanbzlm/creating-custom-modal-224l
+
+  // input message
   @Input('message') message: string = '';
-  @Output() closeEvent = new EventEmitter();
+  // emit close event to parent (Service)
+  @Output() closeEvent = new EventEmitter<ComponentRef<DialogComponent>>();
+  // this component reference (we will use this for removing message inside Service class)
+  public thisComponentRef!: ComponentRef<DialogComponent>;
 
 
   constructor(private el: ElementRef) { }
@@ -17,17 +22,13 @@ export class DialogComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     setTimeout(() => {
       this.close();
-    }, 1000);
+    }, 3000);
   }
 
   close() {
-    this.closeEvent.emit();
+    this.closeEvent.emit(this.thisComponentRef);
   }
 
-  ngOnDestroy(): void {
-    
-  }
-
-
+  ngOnDestroy(): void { }
 
 }
