@@ -1,5 +1,30 @@
 .dialog {
-    /* position: absolute;
-    top: 1em;
-    right: 1em; */
+    margin-bottom: 0.5em;
+    color: black;
+    border-radius: 0.2em;
+    padding: 0.5em;
+}
+
+.dialog-info {
+    background-color: #D1E4FF;
+    border: 1px solid #BFD9FF;
+    color: #1A4084;
+}
+
+.dialog-success {
+    background-color: #D8ECDB;
+    border: 1px solid #C9E5CC;
+    color: #285627;
+}
+
+.dialog-warning {
+    background-color: #FDF3CE;
+    border: 1px solid #FCEEBB;
+    color: #8E6605;
+}
+
+.dialog-error {
+    background-color: #F3D8D9;
+    border: 1px solid #EEC8CA;
+    color: #692221;
 }

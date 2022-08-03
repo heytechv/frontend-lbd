@@ -13,7 +13,7 @@ export class TodoItemComponentComponent implements OnInit {
   // Input (var passed from parrent app.component.html to this)
   @Input("todoIn") public todo : Todo = {name: "", done: false};
 
-  todosService: TodosService;
+  // todosService: TodosService;
 
   /* dialog container */
   @Output("createDialog") createDialogEvent = new EventEmitter;
@@ -22,15 +22,9 @@ export class TodoItemComponentComponent implements OnInit {
    * Inject todosService
    * @param todosService 
    */
-  constructor(todosService: TodosService, private dialogService: DialogService) {
-    this.todosService = todosService;
-  }
+  constructor(private todosService: TodosService, private dialogService: DialogService) { }
 
-  /**
-   * onInit
-   */
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   /**
    * Remove element
@@ -39,7 +33,8 @@ export class TodoItemComponentComponent implements OnInit {
     console.log("Removing "+this.todo.name);
     this.todosService.removeTodo(this.todo);
 
-    this.createDialogEvent.emit({message: "Usunięto '"+this.todo.name+"'"})
+    // show dialog (emit = call from app.component.ts/parent)
+    this.createDialogEvent.emit({message: "Usunięto '"+this.todo.name+"'", type: 'warning'})
   }
 
   /**
@@ -54,13 +49,11 @@ export class TodoItemComponentComponent implements OnInit {
     this.todo.doneCreated = undefined;
     if (state) {
       this.todo.doneCreated = Date.now();
-
-      this.createDialogEvent.emit({message: "Zaznaczono '"+this.todo.name+"' jako zrobione"});
-    } else {
-      this.createDialogEvent.emit({message: "Zaznaczono '"+this.todo.name+"' jak do zrobienia"});
     }
 
-    
+    // show dialog (emit = call from app.component.ts/parent)
+    let msg = state ? "Zaznaczono '"+this.todo.name+"' jako zrobione" : "Zaznaczono '"+this.todo.name+"' jak do zrobienia";
+    this.createDialogEvent.emit({message: msg, type: 'info'});
  }
 
 }
