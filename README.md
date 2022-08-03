@@ -1,6 +1,9 @@
 # FrontendLbd
 TODO list using Angular framework.
 
+## Start
+https://angular.io/guide/setup-local
+
 ## Componenet vs Service vs Module
 `Component` jest jakby widokiem (zawiera logike oraz kod html), który jest wyświetlany dla użytkownika.
 
