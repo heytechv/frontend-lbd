@@ -12,6 +12,8 @@ import { TodoItemComponentComponent } from './todo-item-component/todo-item-comp
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { TodoDonePipe } from './todo-done.pipe';
 import { TooltipDirective } from './tooltip.directive';
+import { ToastComponent } from './toast/toast.component';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 
 @NgModule({
@@ -19,7 +21,8 @@ import { TooltipDirective } from './tooltip.directive';
     AppComponent,
     TodoItemComponentComponent,
     TodoDonePipe,
-    TooltipDirective
+    TooltipDirective,
+    ToastComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,8 @@ import { TooltipDirective } from './tooltip.directive';
     MatButtonModule,
     MatInputModule,
     MatListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    OverlayModule
   ],
   providers: [],
   bootstrap: [AppComponent]

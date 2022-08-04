@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { DialogService } from './dialog/dialog.service';
+import { ToastService } from './toast/toast.service';
 import { TodosService } from './todos.service';
 
 @Component({
@@ -26,7 +27,7 @@ export class AppComponent {
   /** Constructor
    * private pozwala wstrzyknac instancje klas oraz od razu stworzyc zmienna prywatna, tutaj przykladowo:
    *  this.todosService oraz this.dialogService */
-  constructor(private todosService: TodosService, private dialogService: DialogService) { }
+  constructor(private todosService: TodosService, private dialogService: DialogService, private toastService: ToastService) { }
 
   /* On Enter Click inside Input */
   public onEnterInput() {
@@ -64,7 +65,11 @@ export class AppComponent {
    * @param type? success/warning/error/info
    */
   createDialog(message: string, type?: string) {
-    this.dialogService.create(this.dialogEntry, message, type);
+    // this.dialogService.create(this.dialogEntry, message, type);
+
+    this.toastService.show(message, type);
+
+
   }
 
 }
