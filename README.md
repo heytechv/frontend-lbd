@@ -1,7 +1,7 @@
 # FrontendLbd
 TODO list using Angular framework.
 
-You can try out project [on Stackblitz](https://rlmiqpmbg.github.stackblitz.io)
+You can try out [Live Demo on Stackblitz](https://stackblitz.com/github/heytechv/frontend-lbd?file=README.md).
 
 ## Start
 https://angular.io/guide/setup-local
