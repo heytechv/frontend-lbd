@@ -60,6 +60,9 @@ export class ToastService {
 
   }
 
+  /**
+   * Update position of all toast when one from top is removed
+   */
   updatePosOneUp() {
     for (let i=0; i<this.overlayRefList.length; i++) {
       let overlayRef: OverlayRef = this.overlayRefList[i];
