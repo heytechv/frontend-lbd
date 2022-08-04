@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { DialogService } from './dialog/dialog.service';
 import { ToastService } from './toast/toast.service';
 import { TodosService } from './todos.service';
@@ -9,7 +9,7 @@ import { TodosService } from './todos.service';
   styleUrls: ['./app.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'frontend-lbd';
 
   /* input element from HTML (tagget with #todoInput) */
@@ -26,8 +26,17 @@ export class AppComponent {
 
   /** Constructor
    * private pozwala wstrzyknac instancje klas oraz od razu stworzyc zmienna prywatna, tutaj przykladowo:
-   *  this.todosService oraz this.dialogService */
+   *  this.todosService oraz this.dialogService
+   */
   constructor(private todosService: TodosService, private dialogService: DialogService, private toastService: ToastService) { }
+
+  /**
+   * After View is loaded
+   */
+  ngAfterViewInit(): void {
+    // focus
+    this.todoInput.nativeElement.focus();
+  }
 
   /* On Enter Click inside Input */
   public onEnterInput() {
@@ -46,7 +55,6 @@ export class AppComponent {
       this.createDialog("Nazwa jest zbyt krótka", "error");
       return;
     }
-
 
     // add to list
     this.todosService.addTodo({name: val, done: false});
