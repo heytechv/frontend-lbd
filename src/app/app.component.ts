@@ -65,11 +65,9 @@ export class AppComponent {
    * @param type? success/warning/error/info
    */
   createDialog(message: string, type?: string) {
-    // this.dialogService.create(this.dialogEntry, message, type);
+    // this.dialogService.create(this.dialogEntry, message, type);  // requires '<div #dialog></div>' inside app.component.html
 
-    this.toastService.show(message, type);
-
-
+    this.toastService.show(message, type);  // doesn't require any additional html :)
   }
 
 }
