@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild, ViewContainerRef } from '@angular/core';
 import { DialogService } from '../dialog/dialog.service';
+import { ToastService } from '../toast/toast.service';
 import { Todo } from '../todo';
 import { TodosService } from '../todos.service';
 
@@ -22,7 +23,7 @@ export class TodoItemComponentComponent implements OnInit {
    * Inject todosService
    * @param todosService 
    */
-  constructor(private todosService: TodosService, private dialogService: DialogService) { }
+  constructor(private todosService: TodosService, private toastService: ToastService) { }
 
   ngOnInit(): void { }
 
@@ -34,7 +35,8 @@ export class TodoItemComponentComponent implements OnInit {
     this.todosService.removeTodo(this.todo);
 
     // show dialog (emit = call from app.component.ts/parent)
-    this.createDialogEvent.emit({message: "Usunięto '"+this.todo.name+"'", type: 'warning'})
+    // this.createDialogEvent.emit({message: "Usunięto '"+this.todo.name+"'", type: 'warning'})
+    this.toastService.show("Usunięto '"+this.todo.name+"'", 'warning');
   }
 
   /**
@@ -53,7 +55,8 @@ export class TodoItemComponentComponent implements OnInit {
 
     // show dialog (emit = call from app.component.ts/parent)
     let msg = state ? "Zaznaczono '"+this.todo.name+"' jako zrobione" : "Zaznaczono '"+this.todo.name+"' jak do zrobienia";
-    this.createDialogEvent.emit({message: msg, type: 'info'});
+    // this.createDialogEvent.emit({message: msg, type: 'info'});
+    this.toastService.show(msg, 'info');
  }
 
 }

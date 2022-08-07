@@ -48,11 +48,11 @@ export class AppComponent implements AfterViewInit {
     let val:string = this.todoInput.nativeElement.value.trim();
     // not empty
     if (!val) {
-      this.createDialog("Nazwa nie może być pusta", "e");
+      this.toastService.show("Nazwa nie może być pusta", "e");  // doesn't require any additional html :)
       return;
     }
     if (val.length < 5) {
-      this.createDialog("Nazwa jest zbyt krótka", "error");
+      this.toastService.show("Nazwa jest zbyt krótka", "error");  // doesn't require any additional html :)
       return;
     }
 
@@ -64,18 +64,7 @@ export class AppComponent implements AfterViewInit {
     this.todoInput.nativeElement.focus();
 
     // show dialog
-    this.createDialog("Dodano nowy task '"+val+"'", 'success');
-  }
-
-  /**
-   * Create Dialog
-   * @param message message to show inside Dialog
-   * @param type? success/warning/error/info
-   */
-  createDialog(message: string, type?: string) {
-    // this.dialogService.create(this.dialogEntry, message, type);  // requires '<div #dialog></div>' inside app.component.html
-
-    this.toastService.show(message, type);  // doesn't require any additional html :)
+    this.toastService.show("Dodano nowy task '"+val+"'", 'success');  // doesn't require any additional html :)
   }
 
 }
